@@ -18,6 +18,7 @@ import com.sms.repository.StudentRepository;
 import com.sms.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,6 +36,9 @@ public class AdminServiceImpl implements AdminService {
     private final AddressRepository addressRepository;
     @Autowired
     private final EntityMapper entityMapper;
+
+    @Autowired
+    private final PasswordEncoder encoder;
 
     @Override
     public StudentResponse addStudent(StudentRequest request) {
@@ -121,7 +125,7 @@ public class AdminServiceImpl implements AdminService {
         Admin admin=adminRepository.findByUsername(request.getUsername())
                 .orElseThrow(()-> new ResourceNotFoundException("Invalid User"));
 
-        if(!admin.getPassword().equals(request.getPassword())){
+        if(!encoder.matches(request.getPassword(),admin.getPassword())){
             throw new BadRequestException("Invalid Password");
         }
         return "Login Successfull";

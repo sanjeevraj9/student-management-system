@@ -8,6 +8,7 @@ import com.sms.entity.Course;
 import com.sms.entity.Student;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 @Component
@@ -24,14 +25,19 @@ public class EntityMapper {
                 .fatherName(student.getFatherName())
                 .motherName(student.getMotherName())
                 .addresses(
-                        student.getAddresses()
+                        student.getAddresses()==null
+                                ? Collections.emptyList()
+                                :student.getAddresses()
                 .stream()
                 .map(this::toAddressResponse)
                 .collect(Collectors.toList()))
-                .courses(student.getCourses()
-                .stream()
-                .map(this::toCourseResponse)
-                .collect(Collectors.toList()))
+                .courses(
+                        student.getCourses()==null
+                                ? Collections.emptyList()
+                                :student.getCourses()
+                        .stream()
+                        .map(this::toCourseResponse)
+                        .collect(Collectors.toList()))
                 .build();
 
     }
