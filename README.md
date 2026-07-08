@@ -60,7 +60,7 @@ http://localhost:8082/swagger-ui/index.html
 
 
 
-##PostMan Collection
+## PostMan Collection
 
 Postman Collection available inside
 
@@ -79,7 +79,7 @@ password:admin123
 
 ## Rest APIS
 
-# Admin
+### Admin
 
 Post - /api/admin/login
 Post - /api/admin/student
@@ -90,7 +90,7 @@ Post - /api/admin/students
 Post - /api/admin/course/{courseId}/students
 
 
-# Students
+### Students
 
 Post - /api/students/login
 Put - /api/students/{studentId}
