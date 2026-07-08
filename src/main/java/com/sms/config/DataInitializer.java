@@ -21,7 +21,7 @@ public class DataInitializer implements CommandLineRunner {
 
             Admin admin = Admin.builder()
                     .username("admin")
-                    .password(passwordEncoder.encode("sanjeev123"))
+                    .password(passwordEncoder.encode("admin123"))
                     .build();
 
             adminRepository.save(admin);

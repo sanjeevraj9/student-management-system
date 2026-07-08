@@ -5,6 +5,7 @@ import com.sms.dto.response.AddressResponse;
 import com.sms.dto.response.CourseResponse;
 import com.sms.dto.response.StudentResponse;
 import com.sms.service.AdminService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class AdminController {
         return ResponseEntity.ok(adminService.login(request));
     }
     @PostMapping("/student")
-    public ResponseEntity<StudentResponse> addStudent(@RequestBody StudentRequest request){
+    public ResponseEntity<StudentResponse> addStudent(@Valid @RequestBody StudentRequest request){
 
         return ResponseEntity.ok(adminService.addStudent(request));
     }
