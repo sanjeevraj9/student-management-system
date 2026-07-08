@@ -22,15 +22,15 @@ Leave Course
 
 ## Tech
 
-Java 21
-SpringBoot
-Spring Security
-Spring Data Jpa
-Hibernate
-MySQL
-Maven
-Swagger
-Postman
+--Java 21
+--SpringBoot
+--Spring Security
+--Spring Data Jpa
+--Hibernate
+--MySQL
+--Maven
+--Swagger
+--Postman
 
 
 ## Database
@@ -81,13 +81,13 @@ password:admin123
 
 ### Admin
 
-Post - /api/admin/login
-Post - /api/admin/student
-Post- /api/admin/student/{id}/address
-Post - /api/admin/course
-Post - /api/admin/assign-course
-Post - /api/admin/students
-Post - /api/admin/course/{courseId}/students
+Post - /api/admin/login |
+Post - /api/admin/student |
+Post- /api/admin/student/{id}/address |
+Post - /api/admin/course |
+Post - /api/admin/assign-course |
+Post - /api/admin/students |
+Post - /api/admin/course/{courseId}/students |
 
 
 ### Students
