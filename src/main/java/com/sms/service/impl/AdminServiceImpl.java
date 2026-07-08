@@ -26,18 +26,12 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService {
-    @Autowired
+    
     private final AdminRepository adminRepository;
-    @Autowired
     private final StudentRepository studentRepository;
-    @Autowired
     private final CourseRepository courseRepository;
-    @Autowired
     private final AddressRepository addressRepository;
-    @Autowired
     private final EntityMapper entityMapper;
-
-    @Autowired
     private final PasswordEncoder encoder;
 
     @Override

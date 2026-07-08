@@ -16,41 +16,42 @@ import java.util.List;
 @RequestMapping("/api/admin")
 @RequiredArgsConstructor
 public class AdminController {
-    @Autowired
     private final AdminService adminService;
 
     @PostMapping("/login")
-    public String login(@RequestBody AdminLoginRequest request){
-        return adminService.login(request);
+    public ResponseEntity<String> login(@RequestBody AdminLoginRequest request){
+        return ResponseEntity.ok(adminService.login(request));
     }
     @PostMapping("/student")
-    public StudentResponse addStudent(@RequestBody StudentRequest request){
-        return adminService.addStudent(request);
+    public ResponseEntity<StudentResponse> addStudent(@RequestBody StudentRequest request){
+
+        return ResponseEntity.ok(adminService.addStudent(request));
     }
 
     @PostMapping("/student/{studentId}/address")
-    public AddressResponse addAddress(@PathVariable Long studentId, @RequestBody AddressRequest request){
-        return adminService.addAddress(studentId,request);
+    public ResponseEntity<AddressResponse> addAddress(@PathVariable Long studentId, @RequestBody AddressRequest request){
+        return ResponseEntity.ok(adminService.addAddress(studentId,request));
     }
 
     @PostMapping("/course")
-    public CourseResponse addCourse(@RequestBody CourseRequest request){
-        return adminService.addCourses(request);
+    public ResponseEntity<CourseResponse> addCourse(@RequestBody CourseRequest request){
+
+        return ResponseEntity.ok(adminService.addCourses(request));
     }
 
     @PostMapping("/assign-course")
-    public String addAssignedCourse(@RequestBody AssignCourseName request){
+    public ResponseEntity<String> addAssignedCourse(@RequestBody AssignCourseName request){
         adminService.assignCourse(request);
-        return "Course Assigned Successfully";
+        return ResponseEntity.ok("Course Assigned Successfully");
     }
 
     @GetMapping("/students")
-    public List<StudentResponse> searchStudents(@RequestParam String name){
-        return adminService.searchStudent(name);
+    public ResponseEntity<List<StudentResponse>> searchStudents(@RequestParam String name){
+        return ResponseEntity.ok(adminService.searchStudent(name));
     }
     @GetMapping("/course/{courseId}/students")
-    public List<StudentResponse> getStudentByCourse(@PathVariable Long courseId){
-        return adminService.getStudentByCourse(courseId);
+    public ResponseEntity<List<StudentResponse>> getStudentByCourse(@PathVariable Long courseId){
+        return ResponseEntity.ok(adminService.getStudentByCourse(courseId));
     }
 
 }

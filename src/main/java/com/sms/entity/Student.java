@@ -2,6 +2,8 @@ package com.sms.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -24,6 +26,7 @@ public class Student {
     @Column(nullable = false)
     private String name;
 
+    @NotNull
     private LocalDate dateOfBirth;
 
     private String gender;
@@ -31,6 +34,7 @@ public class Student {
     @Column(nullable = false,unique = true)
     private String studentCode;
 
+    @Email
     private String email;
     private String phone;
     private String fatherName;

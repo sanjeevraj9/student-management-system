@@ -60,7 +60,7 @@ public class EntityMapper {
                 .courseName(course.getCourseName())
                 .description(course.getDescription())
                 .courseType(course.getCourseType())
-                .duration(Integer.valueOf(course.getDuration()))
+                .duration(course.getDuration())
                 .topics(course.getTopic())
                 .build();
     }

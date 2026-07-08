@@ -7,6 +7,7 @@ import com.sms.dto.response.StudentResponse;
 import com.sms.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,24 +21,26 @@ public class StudentController {
     private final StudentService studentService;
 
     @PostMapping("/login")
-    public StudentResponse login(@RequestBody StudentLoginRequest request){
-        return studentService.login(request);
+    public ResponseEntity<StudentResponse> login(@RequestBody StudentLoginRequest request){
+
+        return ResponseEntity.ok(studentService.login(request));
     }
     @PutMapping("/{studentId}")
-    public StudentResponse updateProfile(@PathVariable Long studentId, @RequestBody StudentUpdateRequest request){
-        return studentService.updateProfile(studentId,request);
+    public ResponseEntity<StudentResponse> updateProfile(@PathVariable Long studentId, @RequestBody StudentUpdateRequest request){
+        return ResponseEntity.ok(studentService.updateProfile(studentId,request));
     }
-    @GetMapping("{studentId}/course")
-        public List<CourseResponse> getCourse(@PathVariable Long studentId){
-            return studentService.getAssignedCourse(studentId);
+    @GetMapping("{studentId}/courses")
+        public ResponseEntity<List<CourseResponse>> getCourse(@PathVariable Long studentId){
+            return ResponseEntity.ok(studentService.getAssignedCourse(studentId));
 
     }
     @DeleteMapping("{studentId}/course/{courseId}")
-    public String leaveCourse(@PathVariable Long studentId,
-                              @PathVariable Long courseId){
+    public ResponseEntity<String> leaveCourse(@PathVariable Long studentId,
+                                      @PathVariable Long courseId){
+
         studentService.leaveCourse(studentId,courseId);
 
-        return "Course leave";
+        return ResponseEntity.ok("Course leave");
     }
 
 }
