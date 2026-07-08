@@ -2,7 +2,6 @@ package com.sms.service.impl;
 
 import com.sms.dto.request.AddressRequest;
 import com.sms.dto.request.StudentLoginRequest;
-import com.sms.dto.request.StudentRequest;
 import com.sms.dto.request.StudentUpdateRequest;
 import com.sms.dto.response.AddressResponse;
 import com.sms.dto.response.CourseResponse;

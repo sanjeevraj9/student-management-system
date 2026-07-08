@@ -7,7 +7,6 @@ import com.sms.dto.response.StudentResponse;
 import com.sms.service.AdminService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +19,7 @@ public class AdminController {
     private final AdminService adminService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody AdminLoginRequest request){
+    public ResponseEntity<String> login(@Valid @RequestBody AdminLoginRequest request){
         return ResponseEntity.ok(adminService.login(request));
     }
     @PostMapping("/student")
@@ -30,18 +29,18 @@ public class AdminController {
     }
 
     @PostMapping("/student/{studentId}/address")
-    public ResponseEntity<AddressResponse> addAddress(@PathVariable Long studentId, @RequestBody AddressRequest request){
+    public ResponseEntity<AddressResponse> addAddress(@Valid @PathVariable Long studentId, @RequestBody AddressRequest request){
         return ResponseEntity.ok(adminService.addAddress(studentId,request));
     }
 
     @PostMapping("/course")
-    public ResponseEntity<CourseResponse> addCourse(@RequestBody CourseRequest request){
+    public ResponseEntity<CourseResponse> addCourse(@Valid @RequestBody CourseRequest request){
 
         return ResponseEntity.ok(adminService.addCourses(request));
     }
 
     @PostMapping("/assign-course")
-    public ResponseEntity<String> addAssignedCourse(@RequestBody AssignCourseName request){
+    public ResponseEntity<String> addAssignedCourse(@Valid @RequestBody AssignCourseName request){
         adminService.assignCourse(request);
         return ResponseEntity.ok("Course Assigned Successfully");
     }

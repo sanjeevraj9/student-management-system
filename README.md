@@ -86,8 +86,8 @@ Post - /api/admin/student |
 Post- /api/admin/student/{id}/address |
 Post - /api/admin/course |
 Post - /api/admin/assign-course |
-Post - /api/admin/students |
-Post - /api/admin/course/{courseId}/students |
+Get - /api/admin/students |
+Get - /api/admin/course/{courseId}/students |
 
 
 ### Students
@@ -96,6 +96,7 @@ Post - /api/students/login
 Put - /api/students/{studentId}
 Get - /api/students/{studentId}/courses
 Delete - /api/students/{studnetId}/course/{courseId}
+Put -  /api/students/{studentId}/address/{addressId}
 
 
 

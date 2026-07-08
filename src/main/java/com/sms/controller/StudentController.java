@@ -7,9 +7,8 @@ import com.sms.dto.response.AddressResponse;
 import com.sms.dto.response.CourseResponse;
 import com.sms.dto.response.StudentResponse;
 import com.sms.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,12 +22,12 @@ public class StudentController {
     private final StudentService studentService;
 
     @PostMapping("/login")
-    public ResponseEntity<StudentResponse> login(@RequestBody StudentLoginRequest request){
+    public ResponseEntity<StudentResponse> login(@Valid @RequestBody StudentLoginRequest request){
 
         return ResponseEntity.ok(studentService.login(request));
     }
     @PutMapping("/{studentId}")
-    public ResponseEntity<StudentResponse> updateProfile(@PathVariable Long studentId, @RequestBody StudentUpdateRequest request){
+    public ResponseEntity<StudentResponse> updateProfile(@Valid @PathVariable Long studentId, @RequestBody StudentUpdateRequest request){
         return ResponseEntity.ok(studentService.updateProfile(studentId,request));
     }
     @GetMapping("{studentId}/courses")
@@ -38,7 +37,7 @@ public class StudentController {
     }
 
     @PutMapping("/{studentId}/address/{addressId}")
-    public ResponseEntity<AddressResponse> updateAddress(@PathVariable Long studentId,
+    public ResponseEntity<AddressResponse> updateAddress(@Valid @PathVariable Long studentId,
                                                          @PathVariable Long addressId,
                                                          @RequestBody AddressRequest request){
         return ResponseEntity.ok(
